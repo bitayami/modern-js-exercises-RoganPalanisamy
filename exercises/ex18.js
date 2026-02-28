@@ -24,6 +24,28 @@ Create a function named squareCode that will receive a message, and return the s
 
 const squareCode = function (message) {
   // Put your solution here
+  // const cleanMessage = message.replace(/ /g, "");
+  // const length = cleanMessage.length;
+  // const columns = Math.ceil(Math.sqrt(length));
+  // let encoded = "";
+  // for (let i = 0; i < columns; i++) {
+  //   for (let j = i; j < length; j += columns) {
+  //     encoded += cleanMessage[j];
+  //   }
+  //   if (i < columns - 1) {
+  //     encoded += " ";
+  //   }
+  // }
+  // return encoded;
+
+  //use Es6+ features
+  const cleanMessage = message.replace(/ /g, "");
+  const cols = Math.ceil(Math.sqrt(cleanMessage.length));
+
+  return Array.from({ length: cols }, (_, i) => {
+    return Array.from(cleanMessage).filter((_, j) => j % cols === i).join("");
+  }).join(" ");
+
 };
 
 console.log(squareCode("chill out")); // clu hlt io

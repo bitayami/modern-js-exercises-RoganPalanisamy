@@ -8,7 +8,17 @@ Create a function named numberOfVowels that will receive a string and return the
 */
 
 const numberOfVowels = function (data) {
-  // Put your solution here
+  const vowels = "aeiou";
+  // let count = 0;
+  // for (let i = 0; i < data.length; i++) {
+  //   if (vowels.includes(data[i])) {
+  //     count++;
+  //   }
+  // }
+  // return count;
+
+    //use Es6+ features
+  return data.split('').filter(char => vowels.includes(char)).length;
 };
 
 console.log(numberOfVowels("orange")); // 3

@@ -24,6 +24,41 @@ Penny (1¢)
 
 const calculateChange = function (total, cash) {
   // Your code here
+  let change = cash - total;
+  const denominations = {
+    twentyDollar: 2000,
+    tenDollar: 1000,
+    fiveDollar: 500,
+    // twoDollar: 200,
+    // oneDollar: 100,
+    toonie: 200,
+    loonie: 100,
+    quarter: 25,
+    dime: 10,
+    nickel: 5,
+    penny: 1,
+  };
+  // let changeToGive = {};
+  // for (const denomination in denominations) {
+  //   const value = denominations[denomination];
+  //   const count = Math.floor(change / value);
+  //   if (count > 0) {
+  //     changeToGive[denomination] = count;
+  //     change -= count * value;
+  //   }
+  // }
+  // return changeToGive;
+
+  //use Es6+ features
+  const changeToGive = {};
+  for (const [denomination, value] of Object.entries(denominations)) {
+    const count = Math.floor(change / value);
+    if (count > 0) {
+      changeToGive[denomination] = count;
+      change -= count * value;
+    }
+  }
+  return changeToGive;
 };
 
 console.log(calculateChange(1787, 2000)); // { twoDollar: 1, dime: 1, penny: 3 }

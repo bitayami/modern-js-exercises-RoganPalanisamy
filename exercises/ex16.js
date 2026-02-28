@@ -17,6 +17,70 @@ For more information on casing styles, read Wikipedia's Special Case Styles for 
 
 const makeCaze = function (input, caze) {
   // Put your solution here
+  // let result = input;
+  // if (Array.isArray(caze)) {
+  //   caze.forEach((c) => {
+  //     result = makeCaze(result, c);
+  //   });
+  // } else {
+  //   switch (caze) {
+  //     case "camel":
+  //       result = result.replace(/ (\w)/g, (_, c) => c.toUpperCase());
+  //       break;
+  //     case "pascal":
+  //       result = result.replace(/(^\w| \w)/g, (_, c) => c.trim().toUpperCase());
+  //       break;
+  //     case "snake":
+  //       result = result.replace(/ /g, "_");
+  //       break;
+  //     case "kebab":
+  //       result = result.replace(/ /g, "-");
+  //       break;
+  //     case "title":
+  //       result = result.replace(/(^\w| \w)/g, (_, c) => c.toUpperCase());
+  //       break;
+  //     case "vowel":
+  //       result = result.replace(/[aeiou]/gi, (c) => c.toUpperCase());
+  //       break;
+  //     case "consonant":
+  //       result = result.replace(/[^aeiou\s]/gi, (c) => c.toUpperCase());
+  //       break;
+  //     case "upper":
+  //       result = result.toUpperCase();
+  //       break;
+  //     case "lower":
+  //       result = result.toLowerCase();
+  //       break;
+  //   }
+  // }
+  // return result;
+
+  //use Es6+ features
+  if (Array.isArray(caze)) {
+    return caze.reduce((result, c) => makeCaze(result, c), input);  
+  } else {  
+    switch (caze) {
+      case "camel":
+        return input.replace(/ (\w)/g, (_, c) => c.toUpperCase());    
+      case "pascal":
+        return input.replace(/(^\w| \w)/g, (_, c) => c.trim().toUpperCase());
+      case "snake":
+        return input.replace(/ /g, "_");
+      case "kebab":
+        return input.replace(/ /g, "-");
+      case "title":
+        return input.replace(/(^\w| \w)/g, (_, c) => c.toUpperCase());
+      case "vowel":
+        return input.replace(/[aeiou]/gi, (c) => c.toUpperCase());
+      case "consonant":
+        return input.replace(/[^aeiou\s]/gi, (c) => c.toUpperCase());
+      case "upper":
+        return input.toUpperCase();
+      case "lower":
+        return input.toLowerCase();
+    }
+  } 
+
 };
 
 console.log(makeCaze("this is a string", "camel")); // thisIsAString

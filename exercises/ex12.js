@@ -22,6 +22,35 @@ This one is a doozy! We might want to start by creating a helper function called
 
 const chooseRecipe = function (bakeryA, bakeryB, recipes) {
   // Code here!
+  // for (let i = 0; i < recipes.length; i++) {
+  //   const recipe = recipes[i];
+  //   const ingredients = recipe.ingredients;
+  //   let hasIngredientA = false;
+  //   let hasIngredientB = false;
+  //   for (let j = 0; j < ingredients.length; j++) {
+  //     if (bakeryA.includes(ingredients[j])) {
+  //       hasIngredientA = true;
+  //     }
+  //     if (bakeryB.includes(ingredients[j])) {
+  //       hasIngredientB = true;
+  //     }
+  //   }
+  //   if (hasIngredientA && hasIngredientB) {
+  //     return recipe.name;
+  //   }
+  // }
+  // return null;
+
+  //use Es6+ features
+  for (const recipe of recipes) {
+    const ingredients = recipe.ingredients;
+    const hasIngredientA = ingredients.some(ingredient => bakeryA.includes(ingredient));
+    const hasIngredientB = ingredients.some(ingredient => bakeryB.includes(ingredient));
+    if (hasIngredientA && hasIngredientB) {
+      return recipe.name;
+    }
+  }
+  return null;
 };
 
 let bakeryA = ["saffron", "eggs", "tomato paste", "coconut", "custard"];

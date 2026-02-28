@@ -19,7 +19,19 @@ Use some sort of looping. Do Not use String.prototype.replace
 */
 
 const urlEncode = function (text) {
-  // Put your solution here
+  let encodedText = "";
+  const trimmedText = text.trim();
+  for (let i = 0; i < trimmedText.length; i++) {
+    if (trimmedText[i] === " ") {
+      encodedText += "%20";
+    } else {
+      encodedText += trimmedText[i];
+    }
+  }
+  return encodedText;
+
+  //use Es6+ features
+  // return text.trim().split(" ").join("%20");
 };
 
 console.log(urlEncode("cornerstone college")); //cornerstone%20college

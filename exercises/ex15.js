@@ -10,6 +10,26 @@ Create a function named organizeInstructors that will receive an array of instru
 
 const organizeInstructors = function (instructors) {
   // Put your solution here
+  // const organized = {};
+  // for (let i = 0; i < instructors.length; i++) {
+  //   const course = instructors[i].course;
+  //   const name = instructors[i].name;
+  //   if (!organized[course]) {
+  //     organized[course] = [];
+  //   }
+  //   organized[course].push(name);
+  // }
+  // return organized;
+
+  //use Es6+ features
+  const organized = {};
+  instructors.forEach(({name, course}) => {
+    if (!organized[course]) {
+      organized[course] = [];
+    }
+    organized[course].push(name);
+  });
+  return organized;
 };
 
 console.log(
